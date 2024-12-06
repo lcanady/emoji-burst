@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './EmojiBurst.module.css';
+import { sdk } from '@farcaster/frame-sdk';
 
 // Game emojis
 const EMOJIS = ['🍎', '🍇', '🍊', '🫐', '🍓', '🍑'];
@@ -38,6 +39,13 @@ export default function EmojiBurst() {
     }
     initializeBoard();
     setGameState('start');
+  }, []);
+
+  useEffect(() => {
+    const load = async () => {
+      sdk.actions.ready();
+    };
+    load();
   }, []);
 
   // Timer effect
