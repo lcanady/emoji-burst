@@ -39,15 +39,10 @@ export default function EmojiBurst() {
     }
     initializeBoard();
     setGameState('start');
+    sdk.actions.ready();
   }, []);
 
-  useEffect(() => {
-    const load = async () => {
-      sdk.actions.ready();
-    };
-    load();
-  }, []);
-
+  
   // Timer effect
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
